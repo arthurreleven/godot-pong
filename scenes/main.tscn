@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://b3yclwyp13ops"]
+
+[ext_resource type="Texture2D" uid="uid://byym7bt668oxg" path="res://sprites/Players/Player-Green.png" id="1_0wfyh"]
+[ext_resource type="Script" uid="uid://bllmp4dh4si15" path="res://scripts/player.gd" id="1_sugp2"]
+[ext_resource type="Script" uid="uid://bkr2atrd6hxlu" path="res://scripts/ball.gd" id="3_jyhfs"]
+[ext_resource type="Texture2D" uid="uid://craqokhlnodmu" path="res://sprites/Balls/Ball-3.png" id="4_jyhfs"]
+[ext_resource type="Texture2D" uid="uid://dlnkch2fxjuam" path="res://sprites/BackGround.png" id="5_tbgi4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sugp2"]
+radius = 35.44011
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sugp2"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbgi4"]
+size = Vector2(964, 30.5)
+
+[node name="Main" type="Node2D" unique_id=1688034772]
+metadata/_edit_lock_ = true
+
+[node name="BackGround" type="Sprite2D" parent="." unique_id=1204817267]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_tbgi4")
+centered = false
+
+[node name="Player" type="StaticBody2D" parent="." unique_id=1393567763]
+position = Vector2(126, 358)
+script = ExtResource("1_sugp2")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=677143795]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_0wfyh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=468726411]
+position = Vector2(0, 1.9999695)
+scale = Vector2(0.9999998, 0.9999998)
+shape = SubResource("CircleShape2D_sugp2")
+
+[node name="Player2" type="StaticBody2D" parent="." unique_id=1949818348]
+position = Vector2(887, 283)
+script = ExtResource("1_sugp2")
+up = 4194320
+down = 4194322
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Player2" unique_id=1031063053]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_0wfyh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2" unique_id=1782396752]
+position = Vector2(0, 1.9999695)
+shape = SubResource("CircleShape2D_sugp2")
+
+[node name="Ball" type="RigidBody2D" parent="." unique_id=2021975276]
+position = Vector2(499, 332)
+physics_material_override = SubResource("PhysicsMaterial_sugp2")
+gravity_scale = 0.0
+linear_damp_mode = 1
+script = ExtResource("3_jyhfs")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball" unique_id=136847150]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_jyhfs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball" unique_id=1991462843]
+shape = SubResource("CircleShape2D_sugp2")
+
+[node name="Wall" type="StaticBody2D" parent="." unique_id=1088620937]
+position = Vector2(483, 558)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" unique_id=245163561]
+position = Vector2(-2.5, 0)
+shape = SubResource("RectangleShape2D_tbgi4")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Wall" unique_id=2063466703]
+position = Vector2(-1, -573)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_tbgi4")
